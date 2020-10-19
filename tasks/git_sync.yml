@@ -1,5 +1,6 @@
 - name: Get project name
   shell: |
+    set -o pipefail
     echo "{{ item.repo }}" | awk -F[/:] '{print $3}' | sed 's?.git??g'
   args:
     executable: /bin/bash
@@ -8,6 +9,7 @@
 
 - name: 'Configuring git {{ git_project_name.stdout }} project'
   shell: |
+    set -o pipefail
     if [ -d {{ item.dest }} ]
       then
         echo "OK"
