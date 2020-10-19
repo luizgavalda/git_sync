@@ -25,6 +25,4 @@ galaxy_info:
     - gitlab
     - system
 
-dependencies:
-  - git
-  - bash
+dependencies: []
