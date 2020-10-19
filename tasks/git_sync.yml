@@ -1,0 +1,25 @@
+- name: Get project name
+  shell: |
+    echo "{{ item.repo }}" | awk -F[/:] '{print $3}' | sed 's?.git??g'
+  args:
+    executable: /bin/bash
+  register: git_project_name
+  changed_when: False
+
+- name: 'Configuring git {{ git_project_name.stdout }} project'
+  shell: |
+    if [ -d {{ item.dest }} ]
+      then
+        echo "OK"
+    else
+      mkdir -p {{ item.dest }}
+      git clone https://{{ item.user_login }}:{{ item.token }}@{{ item.repo }} {{ item.dest }}
+      cd {{ item.dest }}
+      git config user.name "{{ item.commit_name }}"
+      git config user.email "{{ item.commit_email }}"
+      echo "Project Created"
+    fi
+  args:
+    executable: /bin/bash
+  register: git_sync
+  changed_when: git_sync.stdout != "OK"
