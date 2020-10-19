@@ -1,0 +1,30 @@
+galaxy_info:
+  role_name: git_sync
+
+  author: Luiz Teixeira (@luyz25)
+  description: >-
+    This role handles configure git projects using HTTPS and user token.
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+
+  galaxy_tags:
+    - git
+    - github
+    - gitlab
+    - system
+
+dependencies:
+  - git
+  - bash
