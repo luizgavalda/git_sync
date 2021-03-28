@@ -24,7 +24,7 @@ None
 ```yaml
 - hosts: localhost
   roles:
-    - role: luyz25.git_sync
+    - role: luizgavalda.git_sync
       vars:
         git_sync:
           - repo: github.com/luyz25/git_sync.git
@@ -41,4 +41,4 @@ MIT
 
 ## Author Information
 
-Luiz Teixeira (@luyz25)
+Luiz Teixeira (@luizgavalda)
